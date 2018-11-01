@@ -1,0 +1,12 @@
+.comment {
+    padding:10px;
+    padding-left:20px;
+}
+
+.add_comment {
+    cursor:pointer;
+}
+
+.hide, .placeholder {
+    display:none;
+}
