@@ -35,6 +35,9 @@
     margin-bottom: 5px;
 }
 
+.add_comment_form .new_name {
+    margin-bottom: 5px;
+}
 .hide, .placeholder {
     display:none;
 }
