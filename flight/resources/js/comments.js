@@ -29,7 +29,7 @@ function loadComments(data) {
     $comment_html.removeClass('placeholder');
 
     $.each(data, function(index, comment){
-        //var level = 0;
+
         $comment_html.data('id', comment.id);
         $comment_html.find('.comment_name').html(comment.name);
         $comment_html.find('.comment_date').html(getReadableTimestamp(comment.inserted_at));
@@ -59,15 +59,19 @@ function loadChildren(data, $parent, level = 1) {
         $child_html.find('.comment_date').html(getReadableTimestamp(child.inserted_at));
         $child_html.find('.comment_text').html(child.comment);
         $child_html.find('.add_comment_form').data('parent_id', child.id).attr('data-parent_id', child.id);
+        $child_html.data('level', child.level).attr('data-level', child.level);
 
-        if (level > 2) {
+        if (child.level > 3) {
             $child_html.find('.add_comment_form').remove();
             $child_html.find('.add_comment').remove();
         }
         $parent.find('.child').first().append($child_html);
         if (child.children !== undefined) {
+            console.log(child.comment, level);
             level++;
             loadChildren(child.children, $child_html, level);
+        } else {
+            level = index;
         }
     });
 
@@ -118,7 +122,8 @@ function submitComment(e) {
 }
 
 function addComment(data) {
-    var $comment_html = $('.comment.placeholder').clone();
+    var $comment_html = $('.comment.placeholder').clone(),
+        level = $('.add_comment_form[data-parent_id="' + data.parent_id + '"]').parent().data('level') + 1;
     $comment_html.removeClass('placeholder');
     $comment_html.data('id', data.id);
     $comment_html.find('.comment_name').html(data.name);
@@ -129,8 +134,7 @@ function addComment(data) {
     if(data.parent_id == "0") {
         $($comment_html).insertAfter('.comment.placeholder');
     } else {
-
-        if ($('.add_comment_form[data-parent_id="' + data.parent_id + '"]').parent().find('.child').first().parentsUntil('.comments_wrapper', '.child').length >= 3) {
+        if (level >= 3) {
             $comment_html.find('.add_comment_form').remove();
             $comment_html.find('.add_comment').remove();
         }

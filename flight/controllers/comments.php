@@ -45,12 +45,14 @@ class Comments
      * @param int $parent_id
      * @return array
      */
-    private function getChildComments(array $elements, $parent_id = 0) {
+    private function getChildComments(array $elements, $parent_id = 0, $level = 0) {
         $parent = array();
-
+        $level++;
         foreach ($elements as $element) {
             if ($element['parent_id'] == $parent_id) {
-                $children = $this->getChildComments($elements, $element['id']);
+                $element['level'] = $level;
+
+                $children = $this->getChildComments($elements, $element['id'], $level);
                 if ($children) {
                     $element['children'] = $children;
                 }

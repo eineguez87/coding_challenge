@@ -17,8 +17,14 @@
 
         <div class="comments_wrapper">
             <div class="add_comment_form form-group" data-parent_id='0'>
-                <div class="new_name form-control"><label>Name: </label><input type="text" name="name"></div>
-                <label>Comment: </label><textarea name="comment" class="form-control"></textarea>
+                <div class="new_name form-control">
+                    <label>Name: </label> <br />
+                    <input type="text" name="name">
+                </div>
+                <div class="form-control">
+                    <label>Comment: </label>
+                    <textarea name="comment" class="form-control"></textarea>
+                </div>
                 <button class="submit_comment"> Submit</button>
             </div>
             <div class="comment placeholder">
@@ -29,12 +35,18 @@
                 <div class="comment_text"> </div>
                 <div class="add_comment">Add Comment</div>
                 <div class="add_comment_form hide form-group">
-                    <div class="new_name form-control"><label>Name: </label><input type="text" name="name"></div>
-                    <label>Comment: </label><textarea name="comment" class="form-control"></textarea>
+                    <div class="new_name form-control">
+                        <label>Name: </label><br/>
+                        <input type="text" name="name">
+                    </div>
+                    <div class="form-control">
+                        <label>Comment: </label>
+                        <textarea name="comment" class="form-control"></textarea>
+                    </div>
                     <button class="submit_comment"> Submit</button>
                 </div>
                 <div class="child"> </div>
-            </div>
+            </>
         </div>
     </div>
 </body>
