@@ -1,4 +1,4 @@
-TMBC Code Challenge by Edgardo Ineguez
+Code Challenge by Edgardo Ineguez
 
 The prompt for this coding challenge is as follows: 
 Create a simple comment system for a website with the following requirements:
